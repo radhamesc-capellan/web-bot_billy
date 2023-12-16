@@ -31,14 +31,19 @@ app.post("/message", async (req, res) => {
             //content,
         //}));
 
-        const messages = chatHistory.map(([role, content]) => {
-            if (content === null) {
-                content = "";
-            }
-            return {
-                role,
-                content,
-            };
+        //const messages = chatHistory.map(([role, content]) => {
+            //if (content === null) {
+                //content = "";
+            //}
+            //return {
+              //  role,
+                //content,
+            //};
+        //})
+
+        const message = chatHistory.map(([role, content]) => {
+            role,
+                content: content || "",
         })
 
         messages.push({ role: "user", content: userInput });
@@ -56,7 +61,7 @@ app.post("/message", async (req, res) => {
         res.json({ message: completionText });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Algo salió mal" });
+        res.status(500).json({ error: "Algo salió mal" }, details: error.message);
     }
 });
 
