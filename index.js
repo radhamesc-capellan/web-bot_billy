@@ -20,7 +20,12 @@ app.get("/start", (req, res) => {
 app.post("/message", async (req, res) => {
     const userInput = req.body.message;
 
+    if (userInput == null) {
+        return res.status(400).json({ error: "Entrada Invalida"})
+    }
+
     try {
+        //rad-modi
         //const messages = chatHistory.map(([role, content]) => ({
             //role,
             //content,
