@@ -20,9 +20,9 @@ app.get("/start", (req, res) => {
 app.post("/message", async (req, res) => {
     const userInput = req.body.message;
 
-    if (userInput == null) {
-        return res.status(400).json({ error: "Entrada Invalida"})
-    }
+    //if (userInput == null) {
+      //  return res.status(400).json({ error: "Entrada Invalida"})
+    //}
 
     try {
         //rad-modi
@@ -31,20 +31,20 @@ app.post("/message", async (req, res) => {
             //content,
         //}));
 
-        //const messages = chatHistory.map(([role, content]) => {
-            //if (content === null) {
-                //content = "";
-            //}
-            //return {
-              //  role,
-                //content,
-            //};
-        //})
+        const messages = chatHistory.map(([role, content]) => {
+            if (content === null) {
+                content = "";
+            }
+            return {
+                role,
+                content,
+            };
+        })
 
-        const messages = chatHistory.map(([role, content]) => ({
-            role,
-                content: content || "",
-        }))
+        //const messages = chatHistory.map(([role, content]) => ({
+          //  role,
+            //    content: content || "",
+        //}))
 
         messages.push({ role: "user", content: userInput });
 
