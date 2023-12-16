@@ -41,10 +41,10 @@ app.post("/message", async (req, res) => {
             //};
         //})
 
-        const message = chatHistory.map(([role, content]) => {
+        const message = chatHistory.map(([role, content]) => ({
             role,
                 content: content || "",
-        })
+        }))
 
         messages.push({ role: "user", content: userInput });
 
