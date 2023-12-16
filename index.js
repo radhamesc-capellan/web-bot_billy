@@ -41,7 +41,7 @@ app.post("/message", async (req, res) => {
             //};
         //})
 
-        const message = chatHistory.map(([role, content]) => ({
+        const messages = chatHistory.map(([role, content]) => ({
             role,
                 content: content || "",
         }))
